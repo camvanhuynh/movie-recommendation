@@ -8,5 +8,5 @@ app.use(express.static(path.join(__dirname,'public')));
 
 app.listen(3009, function() {
 
-	console.log('listening on port 3009!!')
+	console.log('started listening on port 3009!!')
 })
