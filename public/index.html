@@ -12,6 +12,65 @@
 
 </head>
 <body ng-app="MovieRecommendationApp">
-	<div ui-view></div>
+
+	<!-- <div ui-view></div> -->
+<div ng-controller="viewEditController as vm">
+
+<div ng-if="!vm.isEditing">
+	<table class='table'>
+	    <thead>
+	      <tr>
+	        <th>Title</th>
+	        <th>Release date</th>
+	        <th>Duration</th>
+	        <th>Genre</th>
+	        <th>Synopsis</th>
+	      </tr>
+	    </thead>
+	    <tbody>
+	      <tr>
+	        <td>{{title}}</td>
+	        <td>{{date}}</td>
+	        <td>{{duration}}</td>
+	        <td>{{genre}}</td>
+	        <td>{{synopsis}}</td>
+	      </tr>
+	    </tbody>
+			<tfoot>
+				<tr><td><input ng-click="editRecommendation()" class="btn btn-info" value="EDIT"></td></tr>
+			</tfoot>
+	</table>
+</div>
+
+<div ng-if="vm.isEditing">
+	<form>
+	  <div class='form-group'>
+	    <label for="title">Title</label>
+	    <input type="text" class="form-control" id="title" ng-model="title">
+	  </div>
+	  <div class='form-group'>
+	    <label for="date">Release date</label>
+	    <input type="date" class="form-control" id="date" ng-model="date">
+	  </div>
+	  <div class='form-group'>
+	    <label for="duration">Duration</label>
+	    <input type="text" class="form-control" id="duration" ng-model="duration">
+	  </div>
+	  <div class='form-group'>
+	    <label for="genre">Genre</label>
+	    <input type="text" class="form-control" id="genre" ng-model="genre">
+	  </div>
+	  <div class='form-group'>
+	    <label for="synopsis">Synopsis</label>
+	    <input type="text" class="form-control" id="synopsis" ng-model="synopsis">
+	  </div>
+
+
+	  <input ng-click="postData()" class="btn btn-info" value="SAVE">
+	  <button type="button" class="btn">CANCEL</button>
+	</form>
+
+</div>
+</div>
 </body>
 </html>
