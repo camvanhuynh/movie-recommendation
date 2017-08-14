@@ -23,7 +23,7 @@ app.config(function ($stateProvider,$urlRouterProvider){
 app.controller('viewEditController',function($http) {
   var vm = this;
   vm.isEditing = false;
-  vm.movie = {};
+  vm.change = {};
 
   vm.save = function () {
     console.log('function postData is invoked');
@@ -49,18 +49,21 @@ app.controller('viewEditController',function($http) {
 
 
     console.log('started to post data');
-    console.log('data is ' + vm.movie.title);
+    console.log('data is ' + vm.change.title);
 
-    $http.post('/recommendation',JSON.stringify(vm.movie)).then(function (response) {
+    $http.post('/recommendation',vm.change).then(function (response) {
+      vm.movie = Object.assign({}, vm.change);
       console.log('response status: ' + response.status);
       console.log('status text: ' + response.statusText);
     });
 
+    vm.movie = Object.assign({}, vm.change);
     vm.isEditing = false;
   };
 
   vm.edit = function () {
     vm.isEditing = true;
+    vm.change = Object.assign({}, vm.movie);
     console.log('edit movie selected');
     //console.log('before saveeee: title is ' + $scope.title);
   };

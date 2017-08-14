@@ -46,28 +46,28 @@
 	<form>
 	  <div class='form-group'>
 	    <label for="title">Title</label>
-	    <input type="text" class="form-control" id="title" ng-model="vm.movie.title">
+	    <input type="text" class="form-control" id="title" ng-model="vm.change.title">
 			<h2>{{vm.movie.title}}</h2>
 	  </div>
 	  <div class='form-group'>
 	    <label for="date">Release date</label>
-	    <input type="date" class="form-control" id="date" ng-model="vm.movie.date">
+	    <input type="date" class="form-control" id="date" ng-model="vm.change.date">
 	  </div>
 	  <div class='form-group'>
 	    <label for="duration">Duration</label>
-	    <input type="text" class="form-control" id="duration" ng-model="vm.movie.duration">
+	    <input type="text" class="form-control" id="duration" ng-model="vm.change.duration">
 	  </div>
 	  <div class='form-group'>
 	    <label for="genre">Genre</label>
-	    <input type="text" class="form-control" id="genre" ng-model="vm.movie.genre">
+	    <input type="text" class="form-control" id="genre" ng-model="vm.change.genre">
 	  </div>
 	  <div class='form-group'>
 	    <label for="synopsis">Synopsis</label>
-	    <input type="text" class="form-control" id="synopsis" ng-model="vm.movie.synopsis">
+	    <input type="text" class="form-control" id="synopsis" ng-model="vm.change.synopsis">
 	  </div>
 
 	  <input ng-click="vm.save()" class="btn btn-info" value="SAVE">
-	  <input ng-click="vm.cancel()" class="btn btn-info" value="SAVE">
+	  <input ng-click="vm.cancel()" class="btn btn-info" value="CANCEL">
 	</form>
 
 </div>
