@@ -7,7 +7,7 @@ app.use(express.static(path.join(__dirname,'public')));
 
 app.listen(3009, function() {
 
-	console.log('Started listening on port 3009.....')
+	console.log('Started listening on port 3009.....!!!!! new')
 })
 
 var recommendation = {
@@ -24,5 +24,6 @@ app.get('/recommendation',function (req,res) {
 
 app.post('/recommendation', function (req, res) {
 	recommendation = req.body;
+	console.log('req.body.title is' + req.body.title);
 	res.status(200);
 });
