@@ -27,7 +27,7 @@ app.controller('viewEditController',function($scope,$http) {
   $scope.postData = function () {
     console.log('function postData is invoked');
 
-    console.log('after save, scope.titele is' + $scope.title);
+    console.log('after save, scope.title is' + $scope.title);
 
     var data = {
       title: $scope.title,
