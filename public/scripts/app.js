@@ -20,11 +20,11 @@ app.config(function ($stateProvider,$urlRouterProvider){
 });
 */
 
-app.controller('viewEditController',function($http) {
+app.controller('viewEditController',function($scope,$http) {
   var vm = this;
   vm.isEditing = false;
   vm.change = {};
-
+/*
   vm.save = function () {
     console.log('function postData is invoked');
 
@@ -60,6 +60,20 @@ app.controller('viewEditController',function($http) {
     vm.movie = Object.assign({}, vm.change);
     vm.isEditing = false;
   };
+*/
+  $scope.submitForm = function(isValid) {
+    if(isValid) {
+      $http.post('/recommendation',vm.change).then(function (response) {
+        vm.movie = Object.assign({}, vm.change);
+        console.log('response status: ' + response.status);
+        console.log('status text: ' + response.statusText);
+      });
+
+      vm.movie = Object.assign({}, vm.change);
+      vm.isEditing = false;
+    }
+    
+  };
 
   vm.edit = function () {
     vm.isEditing = true;
@@ -83,5 +97,6 @@ app.controller('viewEditController',function($http) {
     vm.isEditing = false;
 
   };
+
 
 	});

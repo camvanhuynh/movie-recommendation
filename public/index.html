@@ -16,7 +16,7 @@
 	<!-- <div ui-view></div> -->
 <div ng-controller="viewEditController as vm">
 
-<div ng-if="!vm.isEditing">
+<div ng-if="!vm.isEditing" name ="form">
 	<table class='table'>
 	    <thead>
 	      <tr>
@@ -43,19 +43,21 @@
 </div>
 
 <div ng-if="vm.isEditing">
-	<form>
-	  <div class='form-group'>
+	<form name="editForm">
+	  <div class='form-group' ng-submit="submitForm(editForm.$valid)">
 	    <label for="title">Title</label>
-	    <input type="text" class="form-control" id="title" ng-model="vm.change.title">
-			<h2>{{vm.movie.title}}</h2>
+	    <input type="text" class="form-control" name="title" id="title" ng-model="vm.change.title" required>
+			<p ng-show="editForm.title.$invalid" style="color:red;">Title is required.</p>
 	  </div>
 	  <div class='form-group'>
 	    <label for="date">Release date</label>
-	    <input type="text" class="form-control" id="date" ng-model="vm.change.date">
+	    <input type="date" class="form-control" name="date" id="date" ng-model="vm.change.date" required>
+			<p ng-show="editForm.date.$invalid" style="color:red;">Not a valid date.</p>
 	  </div>
 	  <div class='form-group'>
 	    <label for="duration">Duration</label>
-	    <input type="text" class="form-control" id="duration" ng-model="vm.change.duration">
+	    <input type="number" class="form-control" name="duration" id="duration" ng-model="vm.change.duration" required>
+			<p ng-show="editForm.duration.$invalid" style="color:red;">Duration is number only.</p>
 	  </div>
 	  <div class='form-group'>
 	    <label for="genre">Genre</label>
@@ -66,8 +68,10 @@
 	    <input type="text" class="form-control" id="synopsis" ng-model="vm.change.synopsis">
 	  </div>
 
-	  <input ng-click="vm.save()" class="btn btn-info" value="SAVE">
+	  <input type="submit" class="btn btn-info" value="SAVE CHANGE">
 	  <input ng-click="vm.cancel()" class="btn btn-info" value="CANCEL">
+
+
 	</form>
 
 </div>
